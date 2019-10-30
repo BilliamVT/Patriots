@@ -23,56 +23,46 @@ public class PatriotsPlayerContent {
      */
     public static final Map<String, PatriotsPlayer> ITEM_MAP = new HashMap<String, PatriotsPlayer>();
 
-    private static final int COUNT = 25;
-
     static {
         // Add the players
-        for (int i = 1; i <= COUNT; i++) {
-            addItem(createPatriotsPlayer(i));
-        }
+        addItem(new PatriotsPlayer("Tom Brady", "12", "QB", "42", "Michigan"));
+        addItem(new PatriotsPlayer("Julian Edelman", "11", "WR", "33", "Kent State"));
+        addItem(new PatriotsPlayer("Devin McCourty", "32", "S", "32", "Rutgers"));
+        addItem(new PatriotsPlayer("Dont'a Hightower", "29", "LB", "29", "Alabama"));
+        addItem(new PatriotsPlayer("Matthew Slater", "18", "ST", "34", "UCLA"));
+
+
     }
 
     private static void addItem(PatriotsPlayer item) {
         ITEMS.add(item);
-        ITEM_MAP.put(item.id, item);
-    }
-
-    private static PatriotsPlayer createPatriotsPlayer(int position) {
-        return new PatriotsPlayer(String.valueOf(position), "Item " + position, makeDetails(position));
-    }
-
-    private static String makeDetails(int position) {
-        StringBuilder builder = new StringBuilder();
-        builder.append("Details about Item: ").append(position);
-        for (int i = 0; i < position; i++) {
-            builder.append("\nMore details information here.");
-        }
-        return builder.toString();
+        ITEM_MAP.put(item.name, item);
     }
 
     /**
      * A patriots player object
      */
     public static class PatriotsPlayer {
-        //public final String name;
-        //public final int number;
-        //public final String position;
-        //public final int age;
-        //public final String college;
+        public final String name;
+        public final String number;
+        public final String position;
+        public final String age;
+        public final String college;
+        public final String displayInfo;
 
-        public final String id;
-        public final String content;
-        public final String details;
+        public PatriotsPlayer(String name, String number, String position, String age, String college) {
+            this.name = name;
+            this.number = number;
+            this.position = position;
+            this.age = age;
+            this.college = college;
+            this.displayInfo = "NUM: " + number + " POS: " + position;
 
-        public PatriotsPlayer(String id, String content, String details) {
-            this.id = id;
-            this.content = content;
-            this.details = details;
         }
 
         @Override
         public String toString() {
-            return content;
+            return name;
         }
     }
 }
