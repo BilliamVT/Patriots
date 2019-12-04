@@ -23,8 +23,8 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        Button settings = (Button) findViewById(R.id.facts);
-        settings.setOnClickListener(new View.OnClickListener() {
+        Button facts = (Button) findViewById(R.id.facts);
+        facts.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(view.getContext(), FactActivity.class);
