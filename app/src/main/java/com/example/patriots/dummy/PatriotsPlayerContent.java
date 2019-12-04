@@ -37,12 +37,12 @@ public class PatriotsPlayerContent {
      * A patriots player object
      */
     public static class PatriotsPlayer {
-        public final String name;
-        public final String number;
-        public final String position;
-        public final String age;
-        public final String college;
-        public final String displayInfo;
+        private final String name;
+        private final String number;
+        private final String position;
+        private final String age;
+        private final String college;
+        private final String displayInfo;
 
         public PatriotsPlayer(String name, String number, String position, String age, String college) {
             this.name = name;
@@ -52,6 +52,30 @@ public class PatriotsPlayerContent {
             this.college = college;
             this.displayInfo = "NUM: " + number + " POS: " + position;
 
+        }
+
+        public String getName() {
+            return name;
+        }
+
+        public String getNumber() {
+            return number;
+        }
+
+        public String getPosition() {
+            return position;
+        }
+
+        public String getAge() {
+            return age;
+        }
+
+        public String getCollege() {
+            return college;
+        }
+
+        public String getDisplayInfo() {
+            return displayInfo;
         }
 
         @Override

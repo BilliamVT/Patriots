@@ -49,7 +49,7 @@ public class ItemDetailFragment extends Fragment {
             Activity activity = this.getActivity();
             CollapsingToolbarLayout appBarLayout = (CollapsingToolbarLayout) activity.findViewById(R.id.toolbar_layout);
             if (appBarLayout != null) {
-                appBarLayout.setTitle(mItem.name);
+                appBarLayout.setTitle(mItem.getName());
             }
         }
     }
@@ -61,10 +61,10 @@ public class ItemDetailFragment extends Fragment {
 
         // Show the patriots player as text in a TextView.
         if (mItem != null) {
-            ((TextView) rootView.findViewById(R.id.item_detail)).setText("Number: " + mItem.number
-                    + '\n' + "Position: " + mItem.position
-                    + '\n' + "Age: " + mItem.age
-                    + '\n' + "College: " + mItem.college);
+            ((TextView) rootView.findViewById(R.id.item_detail)).setText("Number: " + mItem.getNumber()
+                    + '\n' + "Position: " + mItem.getPosition()
+                    + '\n' + "Age: " + mItem.getAge()
+                    + '\n' + "College: " + mItem.getCollege());
         }
 
         return rootView;

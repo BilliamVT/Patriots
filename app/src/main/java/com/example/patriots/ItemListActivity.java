@@ -79,7 +79,7 @@ public class ItemListActivity extends AppCompatActivity {
                 PatriotsPlayerContent.PatriotsPlayer item = (PatriotsPlayerContent.PatriotsPlayer) view.getTag();
                 if (mTwoPane) {
                     Bundle arguments = new Bundle();
-                    arguments.putString(ItemDetailFragment.ARG_ITEM_ID, item.name);
+                    arguments.putString(ItemDetailFragment.ARG_ITEM_ID, item.getName());
                     ItemDetailFragment fragment = new ItemDetailFragment();
                     fragment.setArguments(arguments);
                     mParentActivity.getSupportFragmentManager().beginTransaction()
@@ -88,7 +88,7 @@ public class ItemListActivity extends AppCompatActivity {
                 } else {
                     Context context = view.getContext();
                     Intent intent = new Intent(context, ItemDetailActivity.class);
-                    intent.putExtra(ItemDetailFragment.ARG_ITEM_ID, item.name);
+                    intent.putExtra(ItemDetailFragment.ARG_ITEM_ID, item.getName());
 
                     context.startActivity(intent);
                 }
@@ -112,8 +112,8 @@ public class ItemListActivity extends AppCompatActivity {
 
         @Override
         public void onBindViewHolder(final ViewHolder holder, int position) {
-            holder.mIdView.setText(mValues.get(position).name);
-            holder.mContentView.setText(mValues.get(position).displayInfo);
+            holder.mIdView.setText(mValues.get(position).getName());
+            holder.mContentView.setText(mValues.get(position).getDisplayInfo());
 
             holder.itemView.setTag(mValues.get(position));
             holder.itemView.setOnClickListener(mOnClickListener);
