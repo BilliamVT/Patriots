@@ -44,7 +44,45 @@ public class MyDBHandler extends SQLiteOpenHelper {
 
     public void addPlayer(PatriotsPlayerContent.PatriotsPlayer player) {
         ContentValues values = new ContentValues();
+
         values.put(COLUMN_NAME, player.getName());
+        values.put(COLUMN_NUMBER, player.getNumber());
+        values.put(COLUMN_POSITION, player.getPosition());
+        values.put(COLUMN_AGE, player.getAge());
+        values.put(COLUMN_COLLEGE, player.getCollege());
+
+        SQLiteDatabase db = getWritableDatabase();
+
+        db.insert(TABLE_PLAYERS, null, values);
+
+        db.close();
+
+    }
+
+    public void deletePlayer(String playerName) {
+        SQLiteDatabase db = getWritableDatabase();
+        db.execSQL("DELETE FROM " + TABLE_PLAYERS + " WHERE " + COLUMN_NAME + "=\"" + playerName + "\";");
+    }
+
+    public String databaseToString() {
+        String dbString = "";
+        SQLiteDatabase db = getWritableDatabase();
+        String query = "SELECT * FROM " + TABLE_PLAYERS + " WHERE 1";
+
+        Cursor c = db.rawQuery(query, null);
+
+        c.moveToFirst();
+
+        while (!c.isAfterLast()) {
+            if (c.getString(c.getColumnIndex("playerName")) != null) {
+                dbString += c.getString(c.getColumnIndex("playerName"));
+                dbString += "\n";
+            }
+        }
+
+        db.close();
+        return dbString;
+
     }
 
 
