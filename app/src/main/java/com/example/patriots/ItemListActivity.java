@@ -49,19 +49,19 @@ public class ItemListActivity extends AppCompatActivity {
         addPlayer.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Snackbar.make(view, "Add player to database", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();
+                Intent intent = new Intent(view.getContext(), AddPlayerActivity.class);
+                view.getContext().startActivity(intent);
             }
         });
 
-//        FloatingActionButton backItemList = (FloatingActionButton) findViewById(R.id.);
-//        addPlayer.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
-//                Snackbar.make(view, "Add player to database", Snackbar.LENGTH_LONG)
-//                        .setAction("Action", null).show();
-//            }
-//        });
+        FloatingActionButton backItemList = (FloatingActionButton) findViewById(R.id.backFab);
+        backItemList.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(view.getContext(), MainActivity.class);
+                view.getContext().startActivity(intent);
+            }
+        });
 
         if (findViewById(R.id.item_detail_container) != null) {
             // The detail container view will be present only in the

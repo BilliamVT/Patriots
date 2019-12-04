@@ -39,5 +39,15 @@
         app:backgroundTintMode="src_atop"
         app:srcCompat="@android:drawable/ic_menu_add" />
 
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/backFab"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom"
+        android:layout_margin="@dimen/fab_margin"
+        android:focusableInTouchMode="false"
+        app:backgroundTintMode="src_atop"
+        app:srcCompat="@android:drawable/ic_menu_revert" />
+
 
 </androidx.coordinatorlayout.widget.CoordinatorLayout>
