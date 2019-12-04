@@ -26,6 +26,8 @@ import java.util.List;
  */
 public class ItemListActivity extends AppCompatActivity {
 
+    MyDBHandler dbHandler;
+
     /**
      * Whether or not the activity is in two-pane mode, i.e. running on a tablet
      * device.
@@ -41,6 +43,8 @@ public class ItemListActivity extends AppCompatActivity {
         setSupportActionBar(toolbar);
         toolbar.setTitle(getTitle());
 
+        dbHandler = new MyDBHandler(this, null, null, 1);
+
         FloatingActionButton addPlayer = (FloatingActionButton) findViewById(R.id.fab);
         addPlayer.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -49,6 +53,15 @@ public class ItemListActivity extends AppCompatActivity {
                         .setAction("Action", null).show();
             }
         });
+
+//        FloatingActionButton backItemList = (FloatingActionButton) findViewById(R.id.);
+//        addPlayer.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//                Snackbar.make(view, "Add player to database", Snackbar.LENGTH_LONG)
+//                        .setAction("Action", null).show();
+//            }
+//        });
 
         if (findViewById(R.id.item_detail_container) != null) {
             // The detail container view will be present only in the
