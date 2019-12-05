@@ -29,7 +29,7 @@ public class MyDBHandler extends SQLiteOpenHelper {
     @Override
     public void onCreate(SQLiteDatabase db) {
         String query = "CREATE TABLE " + TABLE_PLAYERS + "(" +
-                COLUMN_ID + "INTEGER PRIMARY KEY AUTOINCREMENT, " +
+                COLUMN_ID + " INTEGER PRIMARY KEY AUTOINCREMENT, " +
                 COLUMN_NAME + " TEXT, " +
                 COLUMN_NUMBER + " TEXT, " +
                 COLUMN_POSITION + " TEXT, " +
@@ -64,6 +64,29 @@ public class MyDBHandler extends SQLiteOpenHelper {
     public void deletePlayer(String playerName) {
         SQLiteDatabase db = getWritableDatabase();
         db.execSQL("DELETE FROM " + TABLE_PLAYERS + " WHERE " + COLUMN_NAME + "=\"" + playerName + "\";");
+    }
+
+    public PatriotsPlayerContent.PatriotsPlayer getPlayer(String playerName) {
+        SQLiteDatabase db = getReadableDatabase();
+        String query = "SELECT * FROM " + TABLE_PLAYERS + " WHERE 1";
+
+        Cursor c = db.rawQuery(query, null);
+
+        c.moveToFirst();
+
+        while (!c.isAfterLast()) {
+            if (c.getString(c.getColumnIndex(COLUMN_NAME)).equals(playerName)) {
+                return new PatriotsPlayerContent.PatriotsPlayer(
+                        c.getString(c.getColumnIndex(COLUMN_NAME)),
+                        c.getString(c.getColumnIndex(COLUMN_NUMBER)),
+                        c.getString(c.getColumnIndex(COLUMN_POSITION)),
+                        c.getString(c.getColumnIndex(COLUMN_AGE)),
+                        c.getString(c.getColumnIndex(COLUMN_COLLEGE)));
+            }
+            c.moveToNext();
+        }
+
+        return null;
     }
 
     public ArrayList<PatriotsPlayerContent.PatriotsPlayer> getListOfPlayers() {

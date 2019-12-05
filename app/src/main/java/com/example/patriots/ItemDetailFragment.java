@@ -14,6 +14,8 @@ import android.widget.TextView;
 
 import com.example.patriots.dummy.PatriotsPlayerContent;
 
+import static com.example.patriots.ItemListActivity.dbHandler;
+
 /**
  * A fragment representing a single Item detail screen.
  */
@@ -42,9 +44,13 @@ public class ItemDetailFragment extends Fragment {
 
         if (getArguments().containsKey(ARG_ITEM_ID)) {
             // Load the dummy content specified by the fragment
-            // arguments. In a real-world scenario, use a Loader
-            // to load content from a content provider.
-            mItem = PatriotsPlayerContent.ITEM_MAP.get(getArguments().getString(ARG_ITEM_ID));
+            // arguments.
+
+            String temp = getArguments().getString((ItemDetailFragment.ARG_ITEM_ID));
+
+            System.out.println("");
+
+            mItem = dbHandler.getPlayer(getArguments().getString(ItemDetailFragment.ARG_ITEM_ID));
 
             Activity activity = this.getActivity();
             CollapsingToolbarLayout appBarLayout = (CollapsingToolbarLayout) activity.findViewById(R.id.toolbar_layout);

@@ -77,6 +77,7 @@ public class ItemListActivity extends AppCompatActivity {
     }
 
     private void setupRecyclerView(@NonNull RecyclerView recyclerView) {
+        PatriotsPlayerContent.ITEMS = dbHandler.getListOfPlayers();
         recyclerView.setAdapter(new SimpleItemRecyclerViewAdapter(this, PatriotsPlayerContent.ITEMS, mTwoPane));
     }
 

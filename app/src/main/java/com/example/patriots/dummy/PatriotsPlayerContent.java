@@ -10,16 +10,10 @@ public class PatriotsPlayerContent {
     /**
      * An array of patriots players.
      */
-    public static final List<PatriotsPlayer> ITEMS = new ArrayList<PatriotsPlayer>();
-
-    /**
-     * A map of patriots players
-     */
-    public static final Map<String, PatriotsPlayer> ITEM_MAP = new HashMap<String, PatriotsPlayer>();
+    public static List<PatriotsPlayer> ITEMS = new ArrayList<>();
 
     private static void addItem(PatriotsPlayer item) {
         ITEMS.add(item);
-        ITEM_MAP.put(item.name, item);
     }
 
     /**
