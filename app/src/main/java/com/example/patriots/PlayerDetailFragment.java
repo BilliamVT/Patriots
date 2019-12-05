@@ -46,10 +46,6 @@ public class PlayerDetailFragment extends Fragment {
             // Load the dummy content specified by the fragment
             // arguments.
 
-            String temp = getArguments().getString((PlayerDetailFragment.ARG_ITEM_ID));
-
-            System.out.println("");
-
             mItem = dbHandler.getPlayer(getArguments().getString(PlayerDetailFragment.ARG_ITEM_ID));
 
             Activity activity = this.getActivity();

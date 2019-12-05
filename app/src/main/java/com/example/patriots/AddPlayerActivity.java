@@ -33,7 +33,7 @@ public class AddPlayerActivity extends AppCompatActivity {
             }
         });
 
-        Button confirm = (Button) findViewById(R.id.confirm);
+        Button confirm = (Button) findViewById(R.id.addConfirm);
         confirm.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

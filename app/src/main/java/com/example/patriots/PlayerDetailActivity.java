@@ -32,8 +32,9 @@ public class PlayerDetailActivity extends AppCompatActivity {
         updatePlayer.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Snackbar.make(view, "Update player in database", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();
+                Intent intent = new Intent(view.getContext(), UpdatePlayerActivity.class);
+                intent.putExtra("key", getIntent().getStringExtra(PlayerDetailFragment.ARG_ITEM_ID));
+                view.getContext().startActivity(intent);
             }
         });
 
