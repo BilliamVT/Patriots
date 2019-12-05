@@ -8,6 +8,8 @@ import android.content.ContentValues;
 
 import com.example.patriots.dummy.PatriotsPlayerContent;
 
+import java.util.ArrayList;
+
 public class MyDBHandler extends SQLiteOpenHelper {
 
     private static final int DATABASE_VERSION = 1;
@@ -29,9 +31,9 @@ public class MyDBHandler extends SQLiteOpenHelper {
         String query = "CREATE TABLE " + TABLE_PLAYERS + "(" +
                 COLUMN_ID + "INTEGER PRIMARY KEY AUTOINCREMENT, " +
                 COLUMN_NAME + " TEXT, " +
-                COLUMN_NUMBER + " INTEGER, " +
+                COLUMN_NUMBER + " TEXT, " +
                 COLUMN_POSITION + " TEXT, " +
-                COLUMN_AGE + " INTEGER, " +
+                COLUMN_AGE + " TEXT, " +
                 COLUMN_COLLEGE + " TEXT)";
         db.execSQL(query);
     }
@@ -64,8 +66,8 @@ public class MyDBHandler extends SQLiteOpenHelper {
         db.execSQL("DELETE FROM " + TABLE_PLAYERS + " WHERE " + COLUMN_NAME + "=\"" + playerName + "\";");
     }
 
-    public String databaseToString() {
-        String dbString = "";
+    public ArrayList<PatriotsPlayerContent.PatriotsPlayer> getListOfPlayers() {
+        ArrayList<PatriotsPlayerContent.PatriotsPlayer> players = new ArrayList<>();
         SQLiteDatabase db = getWritableDatabase();
         String query = "SELECT * FROM " + TABLE_PLAYERS + " WHERE 1";
 
@@ -75,15 +77,18 @@ public class MyDBHandler extends SQLiteOpenHelper {
 
         while (!c.isAfterLast()) {
             if (c.getString(c.getColumnIndex("playerName")) != null) {
-                dbString += c.getString(c.getColumnIndex("playerName"));
-                dbString += "\n";
+               players.add(new PatriotsPlayerContent.PatriotsPlayer(
+                       c.getString(c.getColumnIndex(COLUMN_NAME)),
+                       c.getString(c.getColumnIndex(COLUMN_NUMBER)),
+                       c.getString(c.getColumnIndex(COLUMN_POSITION)),
+                       c.getString(c.getColumnIndex(COLUMN_AGE)),
+                       c.getString(c.getColumnIndex(COLUMN_COLLEGE))));
             }
+            c.moveToNext();
         }
 
         db.close();
-        return dbString;
-
+        return players;
     }
-
 
 }

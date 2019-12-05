@@ -17,17 +17,6 @@ public class PatriotsPlayerContent {
      */
     public static final Map<String, PatriotsPlayer> ITEM_MAP = new HashMap<String, PatriotsPlayer>();
 
-    static {
-        // Add the players
-        addItem(new PatriotsPlayer("Tom Brady", "12", "QB", "42", "Michigan"));
-        addItem(new PatriotsPlayer("Julian Edelman", "11", "WR", "33", "Kent State"));
-        addItem(new PatriotsPlayer("Devin McCourty", "32", "S", "32", "Rutgers"));
-        addItem(new PatriotsPlayer("Dont'a Hightower", "29", "LB", "29", "Alabama"));
-        addItem(new PatriotsPlayer("Matthew Slater", "18", "ST", "34", "UCLA"));
-
-
-    }
-
     private static void addItem(PatriotsPlayer item) {
         ITEMS.add(item);
         ITEM_MAP.put(item.name, item);
