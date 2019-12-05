@@ -10,7 +10,7 @@ import com.example.patriots.dummy.PatriotsPlayerContent;
 
 import java.util.ArrayList;
 
-public class MyDBHandler extends SQLiteOpenHelper {
+public class DBHandler extends SQLiteOpenHelper {
 
     private static final int DATABASE_VERSION = 1;
     private static final String DATABASE_NAME = "players.db";
@@ -22,7 +22,7 @@ public class MyDBHandler extends SQLiteOpenHelper {
     public static final String COLUMN_AGE = "playerAge";
     public static final String COLUMN_COLLEGE = "playerCollege";
 
-    public MyDBHandler(Context context, String name, SQLiteDatabase.CursorFactory factory, int version) {
+    public DBHandler(Context context, String name, SQLiteDatabase.CursorFactory factory, int version) {
         super(context, DATABASE_NAME, factory, DATABASE_VERSION);
     }
 

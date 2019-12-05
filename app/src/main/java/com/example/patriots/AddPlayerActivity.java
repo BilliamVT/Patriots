@@ -28,7 +28,7 @@ public class AddPlayerActivity extends AppCompatActivity {
         addBack.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(view.getContext(), ItemListActivity.class);
+                Intent intent = new Intent(view.getContext(), PlayerListActivity.class);
                 view.getContext().startActivity(intent);
             }
         });
@@ -42,14 +42,14 @@ public class AddPlayerActivity extends AppCompatActivity {
                         && playerName.getText() != null
                         && playerNumber.getText() != null
                         && playerPosition.getText() != null) {
-                    ItemListActivity.dbHandler.addPlayer(new PatriotsPlayerContent.PatriotsPlayer(playerName.getText().toString(),
+                    PlayerListActivity.dbHandler.addPlayer(new PatriotsPlayerContent.PatriotsPlayer(playerName.getText().toString(),
                             playerNumber.getText().toString(),
                             playerPosition.getText().toString(),
                             playerAge.getText().toString(),
                             playerCollege.getText().toString()));
                 }
 
-                Intent intent = new Intent(view.getContext(), ItemListActivity.class);
+                Intent intent = new Intent(view.getContext(), PlayerListActivity.class);
                 view.getContext().startActivity(intent);
             }
         });

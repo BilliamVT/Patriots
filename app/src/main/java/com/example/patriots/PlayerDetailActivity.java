@@ -19,7 +19,7 @@ import android.view.MenuItem;
 /**
  * An activity representing a single Item detail screen.
  */
-public class ItemDetailActivity extends AppCompatActivity {
+public class PlayerDetailActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -41,8 +41,8 @@ public class ItemDetailActivity extends AppCompatActivity {
         deletePlayer.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                ItemListActivity.dbHandler.deletePlayer(getIntent().getStringExtra(ItemDetailFragment.ARG_ITEM_ID));
-                Intent intent = new Intent(view.getContext(), ItemListActivity.class);
+                PlayerListActivity.dbHandler.deletePlayer(getIntent().getStringExtra(PlayerDetailFragment.ARG_ITEM_ID));
+                Intent intent = new Intent(view.getContext(), PlayerListActivity.class);
                 view.getContext().startActivity(intent);
             }
         });
@@ -57,9 +57,9 @@ public class ItemDetailActivity extends AppCompatActivity {
             // Create the detail fragment and add it to the activity
             // using a fragment transaction.
             Bundle arguments = new Bundle();
-            arguments.putString(ItemDetailFragment.ARG_ITEM_ID,
-                    getIntent().getStringExtra(ItemDetailFragment.ARG_ITEM_ID));
-            ItemDetailFragment fragment = new ItemDetailFragment();
+            arguments.putString(PlayerDetailFragment.ARG_ITEM_ID,
+                    getIntent().getStringExtra(PlayerDetailFragment.ARG_ITEM_ID));
+            PlayerDetailFragment fragment = new PlayerDetailFragment();
             fragment.setArguments(arguments);
             getSupportFragmentManager().beginTransaction()
                     .add(R.id.item_detail_container, fragment)
@@ -71,7 +71,7 @@ public class ItemDetailActivity extends AppCompatActivity {
     public boolean onOptionsItemSelected(MenuItem item) {
         int id = item.getItemId();
         if (id == android.R.id.home) {
-            NavUtils.navigateUpTo(this, new Intent(this, ItemListActivity.class));
+            NavUtils.navigateUpTo(this, new Intent(this, PlayerListActivity.class));
             return true;
         }
         return super.onOptionsItemSelected(item);

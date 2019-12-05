@@ -14,12 +14,12 @@ import android.widget.TextView;
 
 import com.example.patriots.dummy.PatriotsPlayerContent;
 
-import static com.example.patriots.ItemListActivity.dbHandler;
+import static com.example.patriots.PlayerListActivity.dbHandler;
 
 /**
  * A fragment representing a single Item detail screen.
  */
-public class ItemDetailFragment extends Fragment {
+public class PlayerDetailFragment extends Fragment {
     /**
      * The fragment argument representing the item ID that this fragment
      * represents.
@@ -35,7 +35,7 @@ public class ItemDetailFragment extends Fragment {
      * Mandatory empty constructor for the fragment manager to instantiate the
      * fragment (e.g. upon screen orientation changes).
      */
-    public ItemDetailFragment() {
+    public PlayerDetailFragment() {
     }
 
     @Override
@@ -46,11 +46,11 @@ public class ItemDetailFragment extends Fragment {
             // Load the dummy content specified by the fragment
             // arguments.
 
-            String temp = getArguments().getString((ItemDetailFragment.ARG_ITEM_ID));
+            String temp = getArguments().getString((PlayerDetailFragment.ARG_ITEM_ID));
 
             System.out.println("");
 
-            mItem = dbHandler.getPlayer(getArguments().getString(ItemDetailFragment.ARG_ITEM_ID));
+            mItem = dbHandler.getPlayer(getArguments().getString(PlayerDetailFragment.ARG_ITEM_ID));
 
             Activity activity = this.getActivity();
             CollapsingToolbarLayout appBarLayout = (CollapsingToolbarLayout) activity.findViewById(R.id.toolbar_layout);

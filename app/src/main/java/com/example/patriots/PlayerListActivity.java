@@ -23,9 +23,9 @@ import java.util.List;
 /**
  * An activity representing a list of Items.
  */
-public class ItemListActivity extends AppCompatActivity {
+public class PlayerListActivity extends AppCompatActivity {
 
-    public static MyDBHandler dbHandler;
+    public static DBHandler dbHandler;
 
     /**
      * Whether or not the activity is in two-pane mode, i.e. running on a tablet
@@ -42,7 +42,7 @@ public class ItemListActivity extends AppCompatActivity {
         setSupportActionBar(toolbar);
         toolbar.setTitle(getTitle());
 
-        dbHandler = new MyDBHandler(this, null, null, 1);
+        dbHandler = new DBHandler(this, null, null, 1);
 
         FloatingActionButton addPlayer = (FloatingActionButton) findViewById(R.id.fabUpdate);
         addPlayer.setOnClickListener(new View.OnClickListener() {
@@ -83,7 +83,7 @@ public class ItemListActivity extends AppCompatActivity {
     public static class SimpleItemRecyclerViewAdapter
             extends RecyclerView.Adapter<SimpleItemRecyclerViewAdapter.ViewHolder> {
 
-        private final ItemListActivity mParentActivity;
+        private final PlayerListActivity mParentActivity;
         private final List<PatriotsPlayerContent.PatriotsPlayer> mValues;
         private final boolean mTwoPane;
         private final View.OnClickListener mOnClickListener = new View.OnClickListener() {
@@ -92,23 +92,23 @@ public class ItemListActivity extends AppCompatActivity {
                 PatriotsPlayerContent.PatriotsPlayer item = (PatriotsPlayerContent.PatriotsPlayer) view.getTag();
                 if (mTwoPane) {
                     Bundle arguments = new Bundle();
-                    arguments.putString(ItemDetailFragment.ARG_ITEM_ID, item.getName());
-                    ItemDetailFragment fragment = new ItemDetailFragment();
+                    arguments.putString(PlayerDetailFragment.ARG_ITEM_ID, item.getName());
+                    PlayerDetailFragment fragment = new PlayerDetailFragment();
                     fragment.setArguments(arguments);
                     mParentActivity.getSupportFragmentManager().beginTransaction()
                             .replace(R.id.item_detail_container, fragment)
                             .commit();
                 } else {
                     Context context = view.getContext();
-                    Intent intent = new Intent(context, ItemDetailActivity.class);
-                    intent.putExtra(ItemDetailFragment.ARG_ITEM_ID, item.getName());
+                    Intent intent = new Intent(context, PlayerDetailActivity.class);
+                    intent.putExtra(PlayerDetailFragment.ARG_ITEM_ID, item.getName());
 
                     context.startActivity(intent);
                 }
             }
         };
 
-        SimpleItemRecyclerViewAdapter(ItemListActivity parent,
+        SimpleItemRecyclerViewAdapter(PlayerListActivity parent,
                                       List<PatriotsPlayerContent.PatriotsPlayer> items,
                                       boolean twoPane) {
             mValues = items;
