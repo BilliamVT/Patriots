@@ -6,14 +6,26 @@ import java.util.List;
 import java.util.Map;
 
 public class PatriotsPlayerContent {
-
     /**
      * An array of patriots players.
      */
-    public static List<PatriotsPlayer> ITEMS = new ArrayList<>();
+    private static List<PatriotsPlayer> ITEMS = new ArrayList<>();
 
-    private static void addItem(PatriotsPlayer item) {
-        ITEMS.add(item);
+    public static void setITEMS(List<PatriotsPlayer> ITEMS) {
+        PatriotsPlayerContent.ITEMS = ITEMS;
+    }
+
+    public static List<PatriotsPlayer> getITEMS() {
+        return ITEMS;
+    }
+
+    public static void deletePlayerByName(String name) {
+        for (int i = 0; i < ITEMS.size(); i++) {
+            if (ITEMS.get(i).getName().equals(name)) {
+                ITEMS.remove(i);
+                return;
+            }
+        }
     }
 
     /**

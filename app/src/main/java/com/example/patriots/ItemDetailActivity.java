@@ -41,8 +41,9 @@ public class ItemDetailActivity extends AppCompatActivity {
         deletePlayer.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Snackbar.make(view, "Delete player in database", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();
+                ItemListActivity.dbHandler.deletePlayer(getIntent().getStringExtra(ItemDetailFragment.ARG_ITEM_ID));
+                Intent intent = new Intent(view.getContext(), ItemListActivity.class);
+                view.getContext().startActivity(intent);
             }
         });
 

@@ -64,6 +64,7 @@ public class MyDBHandler extends SQLiteOpenHelper {
     public void deletePlayer(String playerName) {
         SQLiteDatabase db = getWritableDatabase();
         db.execSQL("DELETE FROM " + TABLE_PLAYERS + " WHERE " + COLUMN_NAME + "=\"" + playerName + "\";");
+        PatriotsPlayerContent.deletePlayerByName(playerName);
     }
 
     public PatriotsPlayerContent.PatriotsPlayer getPlayer(String playerName) {
