@@ -7,6 +7,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Toast;
 
 import com.example.patriots.dummy.PatriotsPlayerContent;
 
@@ -36,19 +37,21 @@ public class UpdatePlayerActivity extends AppCompatActivity {
         updateConfirm.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if (playerAge.getText() != null
-                        && playerCollege.getText() != null
-                        && playerName.getText() != null
-                        && playerNumber.getText() != null
-                        && playerPosition.getText() != null) {
+                if (!playerAge.getText().toString().equals("")
+                        && !playerCollege.getText().toString().equals("")
+                        && !playerName.getText().toString().equals("")
+                        && !playerNumber.getText().toString().equals("")
+                        && !playerPosition.getText().toString().equals("")) {
                     Bundle name = getIntent().getExtras();
 
-                    PlayerListActivity.dbHandler.deletePlayer(name.getString("key"));
+                    PlayerListActivity.dbHandler.deletePlayer(name.getString("name"));
                     PlayerListActivity.dbHandler.addPlayer(new PatriotsPlayerContent.PatriotsPlayer(playerName.getText().toString(),
                             playerNumber.getText().toString(),
                             playerPosition.getText().toString(),
                             playerAge.getText().toString(),
                             playerCollege.getText().toString()));
+                } else {
+                    Toast.makeText(getApplicationContext(), "Error left fields blank!", Toast.LENGTH_LONG).show();
                 }
 
                 Intent intent = new Intent(view.getContext(), PlayerListActivity.class);

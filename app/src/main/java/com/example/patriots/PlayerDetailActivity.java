@@ -33,7 +33,7 @@ public class PlayerDetailActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(view.getContext(), UpdatePlayerActivity.class);
-                intent.putExtra("key", getIntent().getStringExtra(PlayerDetailFragment.ARG_ITEM_ID));
+                intent.putExtra("name", getIntent().getStringExtra(PlayerDetailFragment.ARG_ITEM_ID));
                 view.getContext().startActivity(intent);
             }
         });
