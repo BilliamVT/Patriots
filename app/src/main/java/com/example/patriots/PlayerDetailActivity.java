@@ -33,7 +33,11 @@ public class PlayerDetailActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(view.getContext(), UpdatePlayerActivity.class);
+
+                // send the player name to the detail fragment
                 intent.putExtra("name", getIntent().getStringExtra(PlayerDetailFragment.ARG_ITEM_ID));
+
+                // go to update player activity
                 view.getContext().startActivity(intent);
             }
         });
@@ -42,7 +46,10 @@ public class PlayerDetailActivity extends AppCompatActivity {
         deletePlayer.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                // delete the player
                 PlayerListActivity.dbHandler.deletePlayer(getIntent().getStringExtra(PlayerDetailFragment.ARG_ITEM_ID));
+
+                // go to player list activity
                 Intent intent = new Intent(view.getContext(), PlayerListActivity.class);
                 view.getContext().startActivity(intent);
             }

@@ -28,6 +28,7 @@ public class UpdatePlayerActivity extends AppCompatActivity {
         updateBack.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                // go back to the player list activity
                 Intent intent = new Intent(view.getContext(), PlayerListActivity.class);
                 view.getContext().startActivity(intent);
             }
@@ -37,23 +38,30 @@ public class UpdatePlayerActivity extends AppCompatActivity {
         updateConfirm.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                // validate input
                 if (!playerAge.getText().toString().equals("")
                         && !playerCollege.getText().toString().equals("")
                         && !playerName.getText().toString().equals("")
                         && !playerNumber.getText().toString().equals("")
                         && !playerPosition.getText().toString().equals("")) {
+                    // get the player name
                     Bundle name = getIntent().getExtras();
 
+                    // delete the old player
                     PlayerListActivity.dbHandler.deletePlayer(name.getString("name"));
+
+                    // update with new information
                     PlayerListActivity.dbHandler.addPlayer(new PatriotsPlayerContent.PatriotsPlayer(playerName.getText().toString(),
                             playerNumber.getText().toString(),
                             playerPosition.getText().toString(),
                             playerAge.getText().toString(),
                             playerCollege.getText().toString()));
                 } else {
+                    // else empty fields
                     Toast.makeText(getApplicationContext(), "Error left fields blank!", Toast.LENGTH_LONG).show();
                 }
 
+                // return to player list activity
                 Intent intent = new Intent(view.getContext(), PlayerListActivity.class);
                 view.getContext().startActivity(intent);
             }

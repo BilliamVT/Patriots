@@ -18,6 +18,7 @@ public class FactActivity extends AppCompatActivity {
         backFact.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                // return to main activity
                 Intent intent = new Intent(view.getContext(), MainActivity.class);
                 view.getContext().startActivity(intent);
             }

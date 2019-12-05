@@ -18,6 +18,7 @@ public class MainActivity extends AppCompatActivity {
         enter.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                // go to player list activity
                 Intent intent = new Intent(view.getContext(), PlayerListActivity.class);
                 view.getContext().startActivity(intent);
             }
@@ -27,6 +28,7 @@ public class MainActivity extends AppCompatActivity {
         facts.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                // go to fact activity
                 Intent intent = new Intent(view.getContext(), FactActivity.class);
                 view.getContext().startActivity(intent);
             }

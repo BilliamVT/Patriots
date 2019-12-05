@@ -11,14 +11,17 @@ public class PatriotsPlayerContent {
      */
     private static List<PatriotsPlayer> ITEMS = new ArrayList<>();
 
+    // set the ITEM list
     public static void setITEMS(List<PatriotsPlayer> ITEMS) {
         PatriotsPlayerContent.ITEMS = ITEMS;
     }
 
+    // get the ITEM list
     public static List<PatriotsPlayer> getITEMS() {
         return ITEMS;
     }
 
+    // delete a player based on their name
     public static void deletePlayerByName(String name) {
         for (int i = 0; i < ITEMS.size(); i++) {
             if (ITEMS.get(i).getName().equals(name)) {
