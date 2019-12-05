@@ -28,11 +28,20 @@ public class ItemDetailActivity extends AppCompatActivity {
         Toolbar toolbar = (Toolbar) findViewById(R.id.detail_toolbar);
         setSupportActionBar(toolbar);
 
-        FloatingActionButton updatePlayer = (FloatingActionButton) findViewById(R.id.fab);
+        FloatingActionButton updatePlayer = (FloatingActionButton) findViewById(R.id.fabUpdate);
         updatePlayer.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Snackbar.make(view, "Update player in database", Snackbar.LENGTH_LONG)
+                        .setAction("Action", null).show();
+            }
+        });
+
+        FloatingActionButton deletePlayer = (FloatingActionButton) findViewById(R.id.fabDelete);
+        deletePlayer.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Snackbar.make(view, "Delete player in database", Snackbar.LENGTH_LONG)
                         .setAction("Action", null).show();
             }
         });

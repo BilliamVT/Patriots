@@ -10,7 +10,6 @@ import androidx.recyclerview.widget.RecyclerView;
 import androidx.appcompat.widget.Toolbar;
 
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
-import com.google.android.material.snackbar.Snackbar;
 
 import android.view.LayoutInflater;
 import android.view.View;
@@ -45,7 +44,7 @@ public class ItemListActivity extends AppCompatActivity {
 
         dbHandler = new MyDBHandler(this, null, null, 1);
 
-        FloatingActionButton addPlayer = (FloatingActionButton) findViewById(R.id.fab);
+        FloatingActionButton addPlayer = (FloatingActionButton) findViewById(R.id.fabUpdate);
         addPlayer.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
